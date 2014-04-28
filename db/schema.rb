@@ -11,10 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140428173807) do
+ActiveRecord::Schema.define(version: 20140428203707) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "circle_memberships", force: true do |t|
+    t.integer  "circle_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "circle_memberships", ["circle_id"], name: "index_circle_memberships_on_circle_id", using: :btree
+  add_index "circle_memberships", ["user_id"], name: "index_circle_memberships_on_user_id", using: :btree
+
+  create_table "circles", force: true do |t|
+    t.string   "name"
+    t.integer  "owner_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "circles", ["owner_id"], name: "index_circles_on_owner_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email"

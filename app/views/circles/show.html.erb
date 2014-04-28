@@ -1,0 +1,6 @@
+<h1><%= @circle.name %></h1>
+<ul>
+  <% @circle.members.each do |member| %>
+    <li><%= member.email %></li>
+  <% end %>
+</ul>

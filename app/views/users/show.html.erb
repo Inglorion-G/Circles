@@ -1,2 +1,11 @@
 <h1>You're so special... <%= @user.email %></h1>
 <p>This is your special page</h1>
+
+<h4>Your Circles</h4>
+<ul>
+  <% @user.owned_circles.each do |circle| %>
+    <li>
+      <%= link_to "#{circle.name}", circle_url(circle) %>
+    </li>
+  <% end %>
+</ul>

@@ -33,6 +33,7 @@ group :doc do
 end
 
 gem 'debugger'
+gem 'annotate'
 
 group :development do
   gem 'better_errors'
