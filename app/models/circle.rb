@@ -27,6 +27,14 @@ class Circle < ActiveRecord::Base
     inverse_of: :circle
   )
 
+  has_many(
+    :post_shares,
+    class_name: "PostShare",
+    foreign_key: :circle_id,
+    primary_key: :id,
+    inverse_of: :circle
+  )
+
   has_many :members, through: :circle_memberships, source: :member
 
 end

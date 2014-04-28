@@ -32,6 +32,13 @@ class User < ActiveRecord::Base
     primary_key: :id
   )
 
+  has_many(
+    :posts,
+    class_name: "Post",
+    foreign_key: :author_id,
+    primary_key: :id
+  )
+
   has_many :circles, through: :circle_memberships, source: :circle
 
   def self.find_by_credentials(email, password)

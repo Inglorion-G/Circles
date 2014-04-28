@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140428203707) do
+ActiveRecord::Schema.define(version: 20140428224334) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,36 @@ ActiveRecord::Schema.define(version: 20140428203707) do
   end
 
   add_index "circles", ["owner_id"], name: "index_circles_on_owner_id", using: :btree
+
+  create_table "links", force: true do |t|
+    t.string   "title"
+    t.string   "url"
+    t.integer  "post_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "links", ["post_id"], name: "index_links_on_post_id", using: :btree
+
+  create_table "post_shares", force: true do |t|
+    t.integer  "post_id"
+    t.integer  "circle_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "post_shares", ["circle_id"], name: "index_post_shares_on_circle_id", using: :btree
+  add_index "post_shares", ["post_id"], name: "index_post_shares_on_post_id", using: :btree
+
+  create_table "posts", force: true do |t|
+    t.string   "title"
+    t.text     "body"
+    t.integer  "author_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "posts", ["author_id"], name: "index_posts_on_author_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email"
