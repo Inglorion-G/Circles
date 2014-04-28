@@ -1,0 +1,4 @@
+<% if current_user? %>
+  <%= link_to "All Users", users_url %>
+  <%= link_to "#{current_user.email.capitalize} Profile", user_url(current_user) %>
+<% end %>

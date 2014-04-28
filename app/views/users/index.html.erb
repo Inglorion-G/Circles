@@ -1,0 +1,5 @@
+<h1>All the Users</h1>
+<% @users.each do |user| %>
+<h4><%= user.email %></h4>
+<% end %>
+<p><%= "It's a bit lonely in here" if @users.empty? %></p>

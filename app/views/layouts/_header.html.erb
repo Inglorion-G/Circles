@@ -1,0 +1,7 @@
+<% if current_user? %>
+<p><%= current_user.email %> is signed in.</p>
+<%= button_to "Sign Out", session_url, class: "button", method: :delete %>
+<% else %>
+  <%= link_to "Create Account", new_user_url, class: "button", method: :get %>
+  <%= link_to "Sign In", new_session_url, class: "button", method: :get %>
+<% end %>

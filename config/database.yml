@@ -19,8 +19,8 @@ development:
   encoding: unicode
   database: FriendCircle_development
   pool: 5
-  username: FriendCircle
-  password:
+  username: appacademy
+  host: localhost
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
@@ -48,13 +48,13 @@ test:
   encoding: unicode
   database: FriendCircle_test
   pool: 5
-  username: FriendCircle
-  password:
+  username: appacademy
+  host: localhost
 
 production:
   adapter: postgresql
   encoding: unicode
   database: FriendCircle_production
   pool: 5
-  username: FriendCircle
-  password:
+  username: appacademy
+  host: localhost
