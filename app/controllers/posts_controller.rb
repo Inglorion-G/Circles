@@ -1,5 +1,11 @@
 class PostsController < ApplicationController
 
+  def feed
+    redirect_to new_session_url unless current_user?
+    @posts = (current_user.shared_posts + current_user.posts).uniq
+    render :feed
+  end
+
   def new
     @post = Post.new
     render :new

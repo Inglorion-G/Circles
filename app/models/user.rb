@@ -40,6 +40,7 @@ class User < ActiveRecord::Base
   )
 
   has_many :circles, through: :circle_memberships, source: :circle
+  has_many :shared_posts, through: :circles, source: :shared_posts
 
   def self.find_by_credentials(email, password)
     user = User.find_by_email(email)

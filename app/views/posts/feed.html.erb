@@ -1,0 +1,12 @@
+<h1><%= current_user.email %>'s Feed</h1>
+<% @posts.each do |post| %>
+<h4><%= post.title %><h4>
+  <h5> By <%= post.author.email %> </h5>
+<p><%= post.body %></p>
+<ul>
+  <% post.links.each do |link| %>
+  <li><%= link.title %></li>
+    <li><%= link_to link.url %></li>
+  <% end %>
+</ul>
+<% end %>

@@ -17,7 +17,7 @@ class PostShare < ActiveRecord::Base
     class_name: "Circle",
     foreign_key: :circle_id,
     primary_key: :id,
-    inverse_of: :post_share
+    inverse_of: :post_shares
   )
 
   belongs_to(
@@ -25,6 +25,6 @@ class PostShare < ActiveRecord::Base
     class_name: "Post",
     foreign_key: :circle_id,
     primary_key: :id,
-    inverse_of: :post_share
+    inverse_of: :shares
   )
 end

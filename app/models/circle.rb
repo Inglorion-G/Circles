@@ -36,5 +36,6 @@ class Circle < ActiveRecord::Base
   )
 
   has_many :members, through: :circle_memberships, source: :member
+  has_many :shared_posts, through: :post_shares, source: :post
 
 end

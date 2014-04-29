@@ -1,6 +1,6 @@
 <h1>You're so special... <%= @user.email %></h1>
-<p>This is your special page</h1>
-
+<p>This is your special page</h1><br>
+<h3><%= link_to "Your Feed", feed_url %></h3>
 <h4>Your Circles</h4>
 <ul>
   <% @user.owned_circles.each do |circle| %>
@@ -9,5 +9,6 @@
     </li>
   <% end %>
 </ul>
-
+<%= link_to "Create a new Post", new_post_url %>
+<br>
 <%= link_to "Create a new Circle", new_circle_url %>
