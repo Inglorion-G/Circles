@@ -4,3 +4,8 @@
     <li><%= member.email %></li>
   <% end %>
 </ul>
+
+<%= link_to "Edit Circle", edit_circle_url(@circle) %>
+<br>
+<br>
+<%= button_to "Delete Circle", circle_url(@circle), method: :delete %>

@@ -1,25 +1,3 @@
 <h1>Create a New Circle</h1>
 
-<form action="<%= circles_url %>" method="post">
-<%= form_auth_token %>
-<br>
-  <input type="hidden" name="circle[owner_id]" value="<%= current_user.id %>">
-  <label><strong>Circle Name<br>
-  <input type="text" name="circle[name]">
-  </strong></label>
-
-  <h4>Add Friends</h4>
-  <% User.all.each do |user| %>
-    <% if user != current_user %>
-      <label>
-        <input
-          type="checkbox"
-          name="circle[member_ids][]"
-          value="<%= user.id %>">
-        <%= user.email %>
-      </label>
-      <br>
-    <% end %>
-  <% end %>
-  <input type="submit" value="Create Circle">
-</form>
+<%= render :partial => 'form', :locals => { circle: @circle } %>

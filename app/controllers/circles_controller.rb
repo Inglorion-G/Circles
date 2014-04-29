@@ -15,7 +15,7 @@ class CirclesController < ApplicationController
   end
 
   def create
-    @circle = Circle.new(circle_params)
+    @circle = current_user.owned_circles.new(circle_params)
     if @circle.save!
       redirect_to @circle
     else
@@ -25,12 +25,24 @@ class CirclesController < ApplicationController
   end
 
   def edit
+    @circle = Circle.find(params[:id])
+    render :edit
   end
 
   def update
+    @circle = Circle.find(params[:id])
+    if @circle.update_attributes(circle_params)
+      redirect_to @circle
+    else
+      flash.now[:errors] = @circle.errors.full_messages
+      render :new
+    end
   end
 
   def destroy
+    @circle = Circle.find(params[:id])
+    @circle.destroy
+    redirect_to user_url(current_user)
   end
 
   private
