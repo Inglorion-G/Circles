@@ -1,0 +1,52 @@
+<h1>Create a Post</h1>
+
+<form action="<%= posts_url %>" method="post">
+<%= form_auth_token %>
+
+<input type="hidden" name="post[author_id]" value="<%= current_user.id %>">
+
+<h4>Choose Circles</h1>
+  <% current_user.owned_circles.each do |circle| %>
+    <label>
+      <%= circle.name %>
+      <input type="checkbox" name="post[circles][]" value="<%= circle.id %>">
+      <br>
+    </label>
+  <% end %>
+<br>
+<h4>Write a Post</h4>
+
+  <label>Title<br>
+    <input type="text" name="post[title]" value="">
+  </label><br>
+
+  <label>Body<br>
+    <textarea name="post[body]" value="">
+    </textarea>
+  </label><br>
+
+<h4>Add Up to Three Links!</h4>
+
+  <label>Link 1 Title<br>
+    <input type="text" name="links[1][title]">
+  </label><br>
+  <label>URL<br>
+    <input type="text" name="links[1][url]">
+  </label><br><br>
+
+  <label>Link 2 Title<br>
+    <input type="text" name="links[2][title]">
+  </label><br>
+  <label>URL<br>
+    <input type="text" name="links[2][url]">
+  </label><br><br>
+
+  <label>Link 3 Title<br>
+    <input type="text" name="links[3][title]">
+  </label><br>
+  <label>URL<br>
+    <input type="text" name="links[3][url]">
+  </label><br><br>
+
+  <input type="submit" value="Create Post!">
+</form>

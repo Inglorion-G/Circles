@@ -24,7 +24,8 @@ class Post < ActiveRecord::Base
     :links,
     class_name: "Link",
     foreign_key: :post_id,
-    primary_key: :id
+    primary_key: :id,
+    inverse_of: :post
   )
 
   has_many(
@@ -34,4 +35,7 @@ class Post < ActiveRecord::Base
     primary_key: :id,
     inverse_of: :post
   )
+
+  has_many :circles, through: :author, source: :owned_circles
+
 end

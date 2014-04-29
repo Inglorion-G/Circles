@@ -1,0 +1,16 @@
+<h1><%= @post.title %></h1>
+<p><%= @post.body %></p>
+
+<% @post.links.each do |link| %>
+  <h4><%= link.title %></h4>
+  <h4><%= link.url %></h4>
+<% end %>
+
+<h4>Shared with...</h4>
+<ul>
+  <% @post.circles.each do |circle| %>
+    <li>
+      <%= circle.name %>
+    </li>
+  <% end %>
+</ul>
